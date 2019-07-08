@@ -1,0 +1,17 @@
+--- 
+"email": 'tiwarinitin94@gmail.com'
+"ip": '67.227.190.126'
+"notify_account_authn_link": 1
+"notify_account_authn_link_notification_disabled": 1
+"notify_account_login": 0
+"notify_account_login_for_known_netblock": 0
+"notify_account_login_notification_disabled": 1
+"notify_contact_address_change": 1
+"notify_contact_address_change_notification_disabled": 1
+"notify_disk_limit": 1
+"notify_email_quota_limit": 1
+"notify_password_change": 1
+"notify_password_change_notification_disabled": 1
+"origin": 'cpanel'
+"pushbullet_access_token": ''
+"second_email": ''

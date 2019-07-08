@@ -1,0 +1,251 @@
+<script>
+
+
+       window.addEventListener("load",	function () {
+		   
+			 var editor=theWYSIWYG.document;
+
+			 editorTextSet=document.getElementById("theWYSIWYG");  //Editor
+
+			 titleTextSet=document.getElementById("title");  //Title Editor
+
+			 urlTextSet=document.getElementById("url");    //Url Editor
+
+
+
+			 
+
+
+             //For instant value of editor
+			editorTextSet.contentWindow.document.body.onkeyup=function(event) {
+
+				//console.log(event.target.innerHTML);
+
+				$('.not_active_url').removeClass('not_active_url');
+								
+				//$('#saved').addClass('active');
+				$('#valueSave').html("Save");
+
+				savedPost=0;
+				
+				
+
+			};
+
+			var timer = null;
+
+			editorTextSet.contentWindow.document.body.onkeydown=function(event) {
+											
+				clearTimeout(timer);
+                timer = setTimeout(doStuff, 5000);
+				  
+				
+				
+			
+			};
+
+
+
+
+			 editor.designMode="on";
+
+			 boldButton.addEventListener("click",function(){
+				   editor.execCommand("Bold",false,null);
+			 },false);
+
+			 italicButton.addEventListener("click",function(){
+				 editor.execCommand("Italic",false,null);
+			},false);
+
+			supButton.addEventListener("click",function(){
+				 editor.execCommand("Superscript",false,null);
+			},false);
+
+			subButton.addEventListener("click",function(){
+				 editor.execCommand("Subscript",false,null);
+			},false);
+
+			strikeButton.addEventListener("click",function(){
+				 editor.execCommand("Strikethrough",false,null);
+			},false);
+
+			orderedListButton.addEventListener("click",function(){
+				editor.execCommand("InsertOrderedList",false,null); 
+			},false);
+
+			unorderedListButton.addEventListener("click",function(){
+				editor.execCommand("InsertUnorderedList",false,null); 
+			},false);
+
+			fontColorButton.addEventListener("change",function(event){
+				editor.execCommand("ForeColor",false,event.target.value); 
+			},false);
+
+			highlightButton.addEventListener("change",function(event){
+				editor.execCommand("BackColor",false,event.target.value); 
+			},false);
+
+			fontChanger.addEventListener("change",function(event){
+				 editor.execCommand("FontName",false,event.target.value);
+			},false);
+
+			fontSizeChanger.addEventListener("change",function(event){
+				 editor.execCommand("FontSize",false,event.target.value);
+			},false);
+
+
+			linkButton.addEventListener("click",function(event){
+				var url=prompt("Enter a Url","http://");
+				 editor.execCommand("CreateLink",false,url);
+			},false);
+
+			unlinkButton.addEventListener("click",function(event){
+				 editor.execCommand("UnLink",false,null);
+			},false);
+
+			undoButton.addEventListener("click",function(){
+				editor.execCommand("undo",false,null);
+			},false);
+
+			redoButton.addEventListener("click",function(){
+				editor.execCommand("redo",false,null);
+			},false);
+
+
+			image_file.addEventListener("change",function(event){
+
+
+
+				if (this.files && this.files[0]) {
+					 var img = document.querySelector('img');  // $('img')[0]
+					 img.src = URL.createObjectURL(this.files[0]); // set src to file url
+					 
+					 var newImage = document.createElement("img");
+					 newImage.src = img.src;
+					 newImage.style.width="200px";
+					 
+					 uploadImage(newImage);
+
+					 // img.onload = imageIsLoaded; // optional onload event listener
+			    }
+
+			},false);
+
+			htmlVal.addEventListener("click",function(){
+
+				var x=editorTextSet.contentWindow.document.body.innerHTML;
+				
+
+				if(htmlMode==0){
+
+					htmlValue=htmlEndode(x);
+					visualValue=x;
+
+
+				}else{
+					htmlValue=x;
+					visualValue=htmlDecode(x);
+				}
+
+				htmlMode=1;
+
+				//console.log(htmlValue);
+
+				editorTextSet.contentWindow.document.body.innerHTML=htmlValue;
+
+
+			},false);
+
+
+			visualVal.addEventListener("click",function(){
+				var x=document.getElementById("theWYSIWYG").contentWindow.document.body.innerHTML;
+				
+				if(htmlMode==0){
+						htmlValue=htmlEndode(x);
+						visualValue=x;
+						
+					}else{
+						htmlValue=x;
+						visualValue=htmlDecode(x);
+
+					}
+
+					htmlMode=0;
+
+					editorTextSet.contentWindow.document.body.innerHTML=visualValue;
+
+					//console.log(visualValue);
+			 },false);
+
+
+
+			 
+
+
+	   },false);
+</script>
+
+
+
+
+
+<h3> Write an answer</h3>
+
+<div id="textEditor">
+ <div id="error" style="display:none;"></div>
+       <div id="theRibbon" >
+	      <button id="boldButton" title="Bold"><b>B</b></button>
+		  <button id="italicButton" title="Italic"><em>I</em></button>
+		  <button id="supButton" title="Superscript">X<sup>2</sup></button>
+		  <button id="subButton" title="Subscript">X<sub>2</sub></button>
+		  <button id="strikeButton" title="Strikethrough"><s>abc</s></button>
+		  <button id="orderedListButton" title="Number List">(i)</button>
+		  <button id="unorderedListButton" title="Bulleted List">&bull;</button>
+		  <input type="color" id="fontColorButton" name="fontColorButton" title="Change Font Color"/>
+		  <input type="color" id="highlightButton" name="highlightButton" title="Highlight Text"/>
+		  
+		  <select id="fontChanger"name="fontChanger">
+		     <option value="Times New Roman">Times New Roman</option>
+			 <option value="Calibri">Calibri</option>
+			 <option value="Verdana">Verdana</option>	
+			 <option value="Cursive">Cursive</option>
+		  </select>
+
+		  <select id="fontSizeChanger" name="fontSizeChanger">
+		     
+			 <script>
+			     for(var i=1;i<=10;i++){
+					 
+					 document.write("<option value='"+i+"'>"+i+"</option>")
+				 }
+			 
+			 
+			 </script>
+		  
+		  
+		  </select>
+
+		   <button id="linkButton" title="Link Button">Link</button>
+
+		   <button id="unlinkButton" title="Unlink Button">Unlink</button>
+
+		   <button id="undoButton"name="undoButton" title="Undo The Action">&larr;</button>
+		   <button id="redoButton" name="redoButton" title="Redo">&rarr;</button>
+
+		   <button id="insertImage" onclick="document.getElementById('image_file').click();"name="insertImage" title="Insert Image"><img style="margin-bottom:2px;width:20px;padding:1px;height:20px;"src="<?php echo URL;?>public/images/img.png"  /> </button>
+		   <input type="file" name="image_file" id="image_file" accept="image/*" style="display:none" />
+
+		   <button id="htmlVal">HTML</button>/<button id="visualVal">Visual</button>
+
+
+		  
+		  
+		  </div>
+       <div id="richTextArea">
+	  
+	      <iframe id="theWYSIWYG" name="theWYSIWYG" frameborder="0">
+		     
+		  </iframe>
+	   </div>
+   </div>
+

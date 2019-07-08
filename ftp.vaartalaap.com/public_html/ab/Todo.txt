@@ -1,0 +1,56 @@
+To build Vaartalaap- 
+1- profile  - This will show how creative or expressive you are with your imagination and thoughts
+2- home page - showing the news
+3- notification - this system will notify you about others interaction with you              Contemplating
+4- messaging - so people could contact you directly 
+5- setting - for the settings of how you wanna manage your account
+6- Chat box- so anyone could message easily 
+7- page for post - this page will show each individual post and there comments                Done
+8- posting system.                                                                            Done
+9- suggestions based on followers following 
+10- search based system that will search people with common interest and common quotes, common personality.
+11- shortcut- based on the page link that you use the most. 
+12- Likes system                                                                         Done
+13- Share system 
+
+
+
+To do 
+1- Add database table related Profile                  Done
+2- Correct backend queries for profile.                Done
+3- Fetching Data properly.                             Done
+4- Seperate class to hold variable of a profile        Done
+
+
+
+To do today
+1- make tabs work in profile                                                         Done
+ 1- Make tabs working                                                                Done
+ 2- load all tab data                                                                Done
+2- make profile image fix sized                                                     Process
+3- start vaarta button change                                                        Done
+4- work on how to organize data of profile for learning suggestions                Contemplating
+
+
+To do 
+//Work on all Post on time line related work
+Task no. 7 and 13
+
+Task 7 in progress 
+Page name post_user
+
+1- make share work properly
+2- show comment section
+3- show less if post is larger
+4- post embeded
+5- solve loading problem.
+
+create a function that takes user ID and gives username.
+create a function that takes post id and give the post result back.
+
+
+User Class functions
+1- get_user_info($user_pr_id)  id not id then will return logged in user's info else will accept id and then returns 
+   info.
+2-get_user_news() will give all news data of logged in users.
+3- get_specific_post() will give the data of specific post.
